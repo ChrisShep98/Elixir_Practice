@@ -11,17 +11,22 @@ defmodule Example do
   end
 
   def main do
-    x = 5
+    # x = 5
     # IO.puts(x)
     IO.puts(@y) #10
     IO.puts(:hello)
-    name = "Chris"
+    # name = "Chris"
     status = Enum.random([:gold, :silver, :bronze])
 
-    if status === :gold do
-      IO.puts("#{name} has a status of gold!")
-    else
-      IO.puts("#{name} does not have a status of gold")
+    #if status === :gold do
+    # IO.puts("#{name} has a status of gold!")
+    #else
+    # IO.puts("#{name} does not have a status of gold")
+    #end
+    case status do
+      :gold -> IO.puts("Status of gold!")
+      :silver -> IO.puts("Status of silver!")
+      :bronze -> IO.puts("Status of bronze!")
     end
   end
 end
