@@ -11,22 +11,12 @@ defmodule Example do
   end
 
   def main do
-    # x = 5
-    # IO.puts(x)
-    IO.puts(@y) #10
-    IO.puts(:hello)
-    # name = "Chris"
-    status = Enum.random([:gold, :silver, :bronze])
+    time = Time.new(16, 30, 0, 0)
+    date = Date.new(2025, 1, 1)
+    IO.inspect(date)
 
-    #if status === :gold do
-    # IO.puts("#{name} has a status of gold!")
-    #else
-    # IO.puts("#{name} does not have a status of gold")
-    #end
-    case status do
-      :gold -> IO.puts("Status of gold!")
-      :silver -> IO.puts("Status of silver!")
-      :bronze -> IO.puts("Status of bronze!")
-    end
+
+    integer_division = div(10, 2)
+    IO.puts(integer_division)
   end
 end
