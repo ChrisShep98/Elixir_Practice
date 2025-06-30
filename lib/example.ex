@@ -11,12 +11,23 @@ defmodule Example do
   end
 
   def main do
-    time = Time.new(16, 30, 0, 0)
-    date = Date.new(2025, 1, 1)
-    IO.inspect(date)
+    memberships = {:bronze, :silver }
+    memberships = Tuple.append(memberships, :gold)
+    IO.inspect(memberships)
+
+    prices = {5, 10, 15}
+    avg = Tuple.sum(prices) / tuple_size(prices)
+    IO.puts(avg)
 
 
-    integer_division = div(10, 2)
-    IO.puts(integer_division)
+    IO.puts("Average price for #{elem(memberships, 0)} #{elem(memberships, 1)} is #{elem(memberships, 2)}")
+    # ^ how to get the values from a tuple example
+
+
+    user1 = {"Caleb", :gold}
+    {name, membership} = user1
+    # ^ better way to get values from tuples by destructing
+    IO.puts("#{name} has a #{membership} membership")
+    
   end
 end
