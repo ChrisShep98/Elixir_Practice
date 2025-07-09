@@ -1,12 +1,3 @@
-defmodule Membership do
-  defstruct [:type, :price]
-end
-
-
-defmodule User do
-  defstruct [:name, :membership]
-end
-
 defmodule Example do
   use Application
   alias UUID
@@ -21,21 +12,16 @@ defmodule Example do
 
   def main do
 
-    gold_membership = %Membership{type: :gold, price: 25}
-    silver_membership = %Membership{type: :silver, price: 15}
-    bronze_membership = %Membership{type: :bronze, price: 5}
+    correct = :rand.uniform(11) - 1
+    IO.puts(correct)
+    guess = IO.gets("Guess a number between 0 and 10: ") |> String.trim() |> Integer.parse()
+    IO.inspect(guess)
 
-
-
-    #list example:
-
-    users = [
-      %User{name: "Chris", membership: gold_membership},
-      %User{name: "John", membership: silver_membership},
-      %User{name: "Mike", membership: bronze_membership},
-    ]
-
-    Enum.each(users, fn %User{name: name, membership: membership} -> IO.puts("#{name} has a #{membership.type} which costs #{membership.price}.") end)
+    case guess do
+      {result, ""} -> IO.puts("parse successful #{result}")
+      {result, other} -> IO.puts("parse partially successful #{result} and #{other}")
+      :error -> IO.puts("something went wrong")
+    end
 
   end
 end
