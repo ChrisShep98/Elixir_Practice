@@ -1,3 +1,12 @@
+defmodule Membership do
+  defstruct [:type, :price]
+end
+
+
+defmodule User do
+  defstruct [:name, :membership]
+end
+
 defmodule Example do
   use Application
   alias UUID
@@ -11,29 +20,22 @@ defmodule Example do
   end
 
   def main do
-    memberships = {:bronze, :silver }
-    memberships = Tuple.append(memberships, :gold)
-    IO.inspect(memberships)
 
-    prices = {5, 10, 15}
-    avg = Tuple.sum(prices) / tuple_size(prices)
-    IO.puts(avg)
+    gold_membership = %Membership{type: :gold, price: 25}
+    silver_membership = %Membership{type: :silver, price: 15}
+    bronze_membership = %Membership{type: :bronze, price: 5}
 
 
-    IO.puts("Average price for #{elem(memberships, 0)} #{elem(memberships, 1)} is #{elem(memberships, 2)}")
-    # ^ how to get the values from a tuple example
-
-
-    user1 = {"Caleb", :gold}
-    {name, membership} = user1
-    # ^ better way to get values from tuples by destructing
-    IO.puts("#{name} has a #{membership} membership")
 
     #list example:
 
-    users = [{"Chris", :gold}, {"John", :silver}, {"Mike", :bronze}]
+    users = [
+      %User{name: "Chris", membership: gold_membership},
+      %User{name: "John", membership: silver_membership},
+      %User{name: "Mike", membership: bronze_membership},
+    ]
 
-    Enum.each(users, fn {name, membership} -> IO.puts("#{name} has a #{membership} membership.") end)
+    Enum.each(users, fn %User{name: name, membership: membership} -> IO.puts("#{name} has a #{membership.type} which costs #{membership.price}.") end)
 
   end
 end
