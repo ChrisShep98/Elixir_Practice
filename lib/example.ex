@@ -11,17 +11,9 @@ defmodule Example do
   end
 
   def main do
+    even_numbers = Enum.filter([1, 2, 3, 4, 5, 6], fn x -> rem(x, 2) == 0 end)
+    IO.inspect(even_numbers)  # [2, 4, 6]
 
-    correct = :rand.uniform(11) - 1
-    IO.puts(correct)
-    guess = IO.gets("Guess a number between 0 and 10: ") |> String.trim() |> Integer.parse()
-    IO.inspect(guess)
-
-    case guess do
-      {result, ""} -> IO.puts("parse successful #{result}")
-      {result, other} -> IO.puts("parse partially successful #{result} and #{other}")
-      :error -> IO.puts("something went wrong")
-    end
 
   end
 end
