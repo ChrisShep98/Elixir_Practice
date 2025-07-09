@@ -28,6 +28,12 @@ defmodule Example do
     {name, membership} = user1
     # ^ better way to get values from tuples by destructing
     IO.puts("#{name} has a #{membership} membership")
-    
+
+    #list example:
+
+    users = [{"Chris", :gold}, {"John", :silver}, {"Mike", :bronze}]
+
+    Enum.each(users, fn {name, membership} -> IO.puts("#{name} has a #{membership} membership.") end)
+
   end
 end
